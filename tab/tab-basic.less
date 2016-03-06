@@ -1,0 +1,49 @@
+.mod-tab {
+	border: 1px solid #ccc;
+	width: 302px;
+	margin: 50px;
+	ul{
+		list-style: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-left: 0;
+
+	}
+	.tabs{
+		li{
+			float: left;
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border-right: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			cursor: pointer;
+			&:last-child{
+				border-right: none;
+			}
+		}
+		.active{
+			background: #eee;
+		}
+		&:after{
+			content: '';
+			height: 0;
+			display: table;
+			clear: both;			
+		}
+
+	}
+	/*测试*/
+	.panel {
+		display: none;
+		height: 180px;
+		padding: 20px;
+		img{
+			width: 100%;
+		}
+	}
+	.active {
+		display: block;
+	}
+}

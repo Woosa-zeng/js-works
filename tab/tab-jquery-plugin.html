@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="description" content="tab 切换 封装成 jquery 插件">
+    <meta charset="UTF-8">
+    <title>tab 切换 jquery 插件</title>
+    <link rel="stylesheet" href="tab-basic.css">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+    <div class="mod-tab">
+        <ul class="tabs">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div class="panel active">内容1</div>
+        <div class="panel">内容2</div>
+        <div class="panel">内容3</div>
+    </div>
+    <div class="mod-tab">
+        <ul class="tabs">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div class="panel active">内容1</div>
+        <div class="panel">内容2</div>
+        <div class="panel">内容3</div>
+    </div>
+    <script>
+    $.fn.Tab = function(){
+        // console.log(this);       //这里的this 是用户在 $('.mod-tab').Tab() 时的jquery 对象 $('.mdo-tab')
+        var $tabCt = this.find('.tabs'),
+            $tabNodes = $tabCt.children(),
+            $panelNodes;
+        $tabNodes.on('click',function(e){
+            var $target = $(this),
+                index = $target.index();
+            $tabNodes = $target.parents('.mod-tab').find($tabCt.children());
+            $tabNodes.removeClass('active');
+            $target.addClass('active');
+            $panelNodes = $target.parents('.mod-tab').find('.panel');
+            $panelNodes.removeClass('active');
+            $panelNodes.eq(index).addClass('active');
+        })
+
+    };
+
+    //调用
+    $('.mod-tab').Tab();
+    </script>
+</body>
+</html>
